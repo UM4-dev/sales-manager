@@ -1,7 +1,7 @@
 
-
+import { useContext } from 'react';
+import { ProductsContext } from '../context/products/ProductsContext';
 import { useForm } from '../hooks/useForm';
-import { useProduct } from '../hooks/useProduct';
 
 
 export const NewProduct = () => {
@@ -14,14 +14,12 @@ export const NewProduct = () => {
     })
 
     
-    const { products, onAddProduct } = useProduct();
+    const { onAddProduct } = useContext( ProductsContext );
     
     const onSubmitForm = ( e ) => {
         e.preventDefault();
         onAddProduct( formState );
     }
-
-    console.log(products)
 
     return (
         <div className="container my-4">
@@ -69,9 +67,6 @@ export const NewProduct = () => {
                     </button>
                 </form>
             </div>
-            {
-                products.map(product => <div key={product.nombre}>{product.nombre}</div>)
-            }
         </div>
     )
 }

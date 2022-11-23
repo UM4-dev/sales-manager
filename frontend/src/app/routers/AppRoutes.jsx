@@ -1,6 +1,7 @@
 
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Navbar } from '../components/NavBar';
+import { ProductsProvider } from '../context/products/ProductsProvider';
 
 import { 
     NewProduct, 
@@ -14,7 +15,7 @@ import { Search } from '../pages/Search';
 
 export const AppRoutes = () => {
     return (
-        <>
+        <ProductsProvider>
             <Navbar />
             <Routes>
                 <Route path="/products" element={ <Products /> } />
@@ -26,6 +27,6 @@ export const AppRoutes = () => {
 
                 <Route path="/*" element={ <Navigate to="/products" /> } />
             </Routes>
-        </>
+        </ProductsProvider>
     )
 }
