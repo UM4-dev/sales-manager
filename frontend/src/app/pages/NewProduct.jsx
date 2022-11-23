@@ -1,12 +1,12 @@
 
 import { useContext } from 'react';
-import { ProductsContext } from '../context/products/ProductsContext';
+import { AppContext } from '../context/app/AppContext';
 import { useForm } from '../hooks/useForm';
 
 
 export const NewProduct = () => {
 
-    const { formState, nombre, cantidad, precio, descripcion, onChangeInput } = useForm({
+    const { formState, nombre, cantidad, precio, descripcion, onChangeInput, resetForm } = useForm({
         nombre : '',
         cantidad : '',
         precio : '',
@@ -14,11 +14,13 @@ export const NewProduct = () => {
     })
 
     
-    const { onAddProduct } = useContext( ProductsContext );
+    const { onAddProduct } = useContext( AppContext );
     
     const onSubmitForm = ( e ) => {
         e.preventDefault();
         onAddProduct( formState );
+        alert(`${nombre} creado correctamente`);
+        resetForm();
     }
 
     return (

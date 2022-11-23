@@ -1,11 +1,11 @@
 import { useContext } from "react"
 import { ProductList } from "../components/ProductList";
-import { ProductsContext } from "../context/products/ProductsContext"
+import { AppContext } from "../context/app/AppContext";
 
 
 export const Products = () => {
 
-    const { products } = useContext( ProductsContext );
+    const { products } = useContext( AppContext );
 
     return (
         <div className="container">
